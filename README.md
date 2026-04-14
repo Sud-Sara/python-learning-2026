@@ -1,1 +1,1 @@
-# My Python Learning Journey - Technical PM Transformation
+# My Python Learning Journey
