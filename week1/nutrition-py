@@ -1,0 +1,9 @@
+def main():
+    item = input("Item: ").lower()
+    chart ={"apple": "130", "avocado": "50", "sweet cherries": "100", "kiwifruit": "90", "pear": "100"}
+    if item in chart:
+        print("Calories:", chart[item])
+
+
+if __name__ == "__main__":
+    main()
