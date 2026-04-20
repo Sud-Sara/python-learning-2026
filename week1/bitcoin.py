@@ -1,9 +1,13 @@
 import requests
 import sys
 import json
+import os
+from dotenv import load_dotenv
 
 def main():
-    apiKey="3aa5c92cb7fad3a29b5b281af908a1d25452db8a10f2a61f75f1d6178e768d55"
+    load_dotenv()
+    apiKey=os.getenv('COINCAP_API_KEY')
+   
     if not len(sys.argv)==2:
         sys.exit("Missing command-line argument  ")
     elif validate_input():
@@ -13,7 +17,7 @@ def main():
 
     try:
         r = requests.get(f"https://rest.coincap.io/v3/assets/bitcoin?apiKey={apiKey}")
-        response = r.json()
+        response= r.json()
         amount=input* float(response["data"]["priceUsd"])
         print(f"${amount:,.4f}")
 
