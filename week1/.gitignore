@@ -1,0 +1,36 @@
+# Environment variables & secrets
+.env
+.env.local
+*.env
+
+# API keys and config
+config.json
+secrets.json
+api_keys.txt
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs
+*.log
