@@ -1,14 +1,16 @@
 def main():
     answer = input("Input: ").strip()
     print("Output: ", end="")
-    convert(answer)
+    print (f"{shorten(answer)}")
 
 
 
-def convert(camel):
-    for c in camel:
+def shorten(ans):
+    retans=""
+    for c in ans:
         if not c in ["A","E","I","O","U","a","e","i","o","u"]:
-            print(c, end="")
+            retans+=c
+    return retans
 
 
 
