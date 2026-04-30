@@ -1,17 +1,20 @@
 import sys
+import feedparser
 
 def main():
+
     print("\nHey, how are you doing!")
     print("What would you like to do today?")
-    print("\nType:")
-    print("\t'News'   : For latest news Today.")
-    print("\t'Sports' : To find out about sporting events today.")
-    print("\t'Quote'  : For an inspirational quote.")
-    print("\t'X'      : To quit the program")
 
     while True:
-        choice=(validate(input("\nEnter:>")))
-        print(choice)
+        print("\nType:")
+        print("\t'News'   : For latest news Today.")
+        print("\t'Sports' : To find out about sporting events today.")
+        print("\t'Quote'  : For an inspirational quote.")
+        print("\t'X'      : To quit the program")
+       
+        validate(input("\nEnter:>"))
+        
 
 
 def validate(s):
@@ -21,14 +24,26 @@ def validate(s):
         get_news()
     elif s.strip().lower() == "sports":
         get_sports()
-    elif s.strip().lower() == "qoute":
+    elif s.strip().lower() == "quote":
         get_quote()
     else:
         return "Invalid input"
 
 
 def get_news():
-    print("\nGenerating latest news for you!")
+    url = "https://news.google.com/rss?hl=en-US&gl=US&ceid=US:en"
+    feed = feedparser.parse(url)
+    
+    print("\n" + "="*70)
+    print("📰 Generating latest news for you!")
+    print("="*70 + "\n")
+    
+    for i, entry in enumerate(feed.entries[:5], 1):
+        # Shorten the URL display
+        short_url = entry.link[:50] + "..." if len(entry.link) > 50 else entry.link
+        
+        print(f"{i}. {entry.title}")
+        print(f"   🔗 {short_url}\n")
 
 
 
